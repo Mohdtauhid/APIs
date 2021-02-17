@@ -1,4 +1,6 @@
 package com.craterzone.model;
+
+
 public class User 
 {
 	private int id;

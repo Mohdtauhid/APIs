@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.craterzone.exception.UserException;
 import com.craterzone.model.User;
 import com.craterzone.service.UserService;
 
@@ -33,15 +34,15 @@ public class UserController
 	}
 	
 	  @GetMapping("/{id}") 
-	  public ResponseEntity<User> getUser(@PathVariable("id") int id) { 
-		User user = userService.getUserById(id); 
+	  public ResponseEntity<User> getUser(@PathVariable("id") int id) throws UserException { 
+		User user = userService.getUser(id); 
 		if(Objects.nonNull(user)) 
 		{
 	    return ResponseEntity.status(HttpStatus.OK).body(user); 
 	  } 
 		return ResponseEntity.badRequest().build(); }
 	 
-	
+/*
 	  @GetMapping
 	  public ResponseEntity<List<User>> getAllUser(){
 		 List<User> list=  userService.getUser();
@@ -72,5 +73,5 @@ public class UserController
 	         userService.deleteById(id);
 	    }
 	 
-	  
+	*/  
 }

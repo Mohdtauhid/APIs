@@ -1,15 +1,8 @@
 package com.craterzone.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.jetbrains.annotations.NotNull;
 
-import com.sun.istack.NotNull;
-
-  public class MobileNumber 
+public class MobileNumber 
   {
   private int id;
   private String cc;

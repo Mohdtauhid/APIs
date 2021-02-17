@@ -1,9 +1,14 @@
 package com.craterzone;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
 public class MyClientApplication {
 
-	public MyClientApplication() {
-		// TODO Auto-generated constructor stub
+	public static void main(String[] args) 
+	{
+		SpringApplication.run( MyClientApplication.class, args);
 	}
 
 }

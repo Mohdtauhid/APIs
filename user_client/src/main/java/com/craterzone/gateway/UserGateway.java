@@ -16,11 +16,11 @@ import retrofit2.Response;
 @Component
 public class UserGateway 
 {
-private static final Logger logger = LoggerFactory.getLogger(UserGateway.class);
+//private static final Logger logger = LoggerFactory.getLogger(UserGateway.class);
 @Autowired
 private UserClient masterClient;
 
-public Response<User> getUser(int id) throws UserException 
+public User getUser(int id) throws UserException 
 {
   Response<User> userResponse = masterClient.getUser(id).blockingGet();
   
@@ -29,9 +29,9 @@ public Response<User> getUser(int id) throws UserException
 
 	if (!userResponse.isSuccessful()) 
 		throw new UserException("USER_NOT_FOUND", HttpStatus.BAD_REQUEST);
-  
-return userResponse;
-	                 
+						//logger.info("Hello World");
+return userResponse.body();
+ 
 }
 
 /*	

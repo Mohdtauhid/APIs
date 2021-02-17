@@ -16,8 +16,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import okhttp3.logging.HttpLoggingInterceptor.Level;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import retrofit2.converter.jackson.JacksonConverterFactory;
-
+import retrofit2.converter.gson.GsonConverterFactory;
 @Configuration
 public class UserConfig 
 {
@@ -28,20 +27,10 @@ public UserClient masterClient(@Value("${connection.read.timeout.second}") final
 		.client(new OkHttpClient.Builder().readTimeout(timeoutSeconds, TimeUnit.SECONDS)
 		.connectTimeout(timeoutSeconds, TimeUnit.SECONDS)
 		.addInterceptor(new HttpLoggingInterceptor().setLevel(Level.BASIC)).build())
-		.baseUrl(baseUrl).addConverterFactory(JacksonConverterFactory.create(buildDefaultMapper()))
+		.baseUrl(baseUrl).addConverterFactory(GsonConverterFactory.create())
 		//.addConverterFactory(ScalarsConverterFactory.create())
 		.addCallAdapterFactory(RxJava2CallAdapterFactory.create()).build().create(UserClient.class);
 }
 
-/* Builds the default object mapper to be used by clients to parse/populate Json object.
-  	@return the {@link ObjectMapper} prepared with default configuration.
-*/
-private ObjectMapper buildDefaultMapper() 
-{
-	final ObjectMapper objectMapper = new ObjectMapper();
-	objectMapper.registerModule(new JavaTimeModule());
-	objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-	return objectMapper;
-}
 
 }
