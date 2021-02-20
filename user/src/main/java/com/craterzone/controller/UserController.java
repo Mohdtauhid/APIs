@@ -35,7 +35,7 @@ public class UserController
 	
 	  @GetMapping("/{id}") 
 	  public ResponseEntity<User> getUser(@PathVariable("id") int id) throws UserException { 
-		User user = userService.getUser(id); 
+		User user = User.class.cast(userService.getUser(id)); 
 		if(Objects.nonNull(user)) 
 		{
 	    return ResponseEntity.status(HttpStatus.OK).body(user); 

@@ -28,14 +28,12 @@
 			<optional>true</optional>
 		</dependency>
 
-
-
 	</dependencies>
 
 	<!-- Child Modules -->
 	<modules>
 		<module>user</module>
-		<module>user_client</module>
+		<module>client</module>
 	</modules>
 
 

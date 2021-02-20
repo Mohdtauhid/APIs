@@ -1,0 +1,3 @@
+com\craterzone\controller\UserController.class
+com\craterzone\service\UserService.class
+com\craterzone\UserApplication.class

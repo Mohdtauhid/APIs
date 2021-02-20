@@ -21,10 +21,10 @@ public class UserService {
 	}
 	
 	
-	public User getUser(int id) throws UserException 
+	public Object getUser(int id) throws UserException 
 	{
-		User list = usergateway.getUser(id);
-		return list;
+		Object user = usergateway.getUser(id);
+		return user;
 	}
 	
 	
